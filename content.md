@@ -25,7 +25,7 @@ Here is the first repository to fork and open a codespace on:
 
 ## Finding holes
 
-The project for today is [Photogram Industrial Authorization](https://github.com/appdev-projects/industrial-auth-1). Get that project opened in a codespace now.
+The project for today is _Photogram Industrial Authorization_.
 
 Our industrial-grade application is shaping up, but it's sorely lacking in one area: security.
 
@@ -36,27 +36,39 @@ Right now, if you spin up the app, everyone can see everything and do everything
 - Sign in with `alice@example.com` / `password`.
 - Poke around. Make a list of security issues that you discover.
 
-We should make the application more secure. [Here is our first target.](https://industrial-auth-1.matchthetarget.com/)
+We should make the application more secure! 
+
+Here is our target:
+
+[industrial-auth-1.matchthetarget.com](https://industrial-auth-1.matchthetarget.com/)
+
+Did you spend some time looking for security holes? Try and do that and _think_ about the app before you keep reading.
+
+---
 
 Here's just _some_ of the security issues we need to fix:
 
 - A user can edit any other user's photos, captions, and comments, including deleting them
 - A user can see, accept, and reject other user's follow requests
 - A user can guess at URL endpoints and find them, even if they aren't linked, such as: 
-  - **/comments**
-  - **/photos**
-  - **/likes**
-  - **/follow_requests**
-  - That implies they can also reach **/ID/edit**, etc. for each of those
+  - `/comments`
+  - `/photos`
+  - `/likes`
+  - `/follow_requests`
+  - That implies they can also reach `/ID/edit`, etc. for each of those
 - Private profiles are not private at all
 - No limit to password attempts
 - The `own_id` can be changed by manipulating the edit form for a photo and comment
 
 Rails does a lot of helpful things for us like CSRF authenticity tokens, encrypting `session` so it can't be spoofed, etc., but it can't save us from ourselves! If we just use `scaffold` and leave all the routes, then they will be available.
 
-### Tasks
+## Tasks
 
-Secure your application until you think it matches [the target](https://industrial-auth-1.matchthetarget.com/). A non-exhaustive list of things to do:
+Secure your application until you think it matches the target:
+
+[industrial-auth-1.matchthetarget.com](https://industrial-auth-1.matchthetarget.com/) 
+
+A non-exhaustive list of things to do:
 
  - If I click delete on a photo that's not mine, I should be redirected back to the page I was on before. *(Once you've locked that down properly, you should hide the link so as not to be rude.)*
  - If I click edit on a photo that's not mine, I should be redirected back to the page I was on before. *(Once you've locked that down properly, you should hide the link so as not to be rude.)*
@@ -66,14 +78,11 @@ Secure your application until you think it matches [the target](https://industri
     - They are not private. Then anyone can see their posts and likes, even if they are not a follower.
     - They are private and I am an accepted follower. (I can still see anyone's post if it e.g. shows up in my Discover, and that is how I might wind up on their profile page to send them a follow request.)
  - Only a user should be able to see their own Pending follow requests.
- - The collections of photos that a user sees through their leaders (feed, discover) should only be viewable by them. In other words, **/carol/feed** and **/carol/discover** should not be visitable by Alice or Bob, only by Carol.
+ - The collections of photos that a user sees through their leaders (feed, discover) should only be viewable by them. In other words, `/carol/feed` and `/carol/discover` should not be visitable by Alice or Bob, only by Carol.
 
 ### Workflow
 
-Try to use a good Git workflow, including branching, opening Pull Requests, and merging back to `main` before starting on your next task. If you do, then it will be easy for us to give you feedback on each task in isolation.
-
- - [Merging workflow](https://chapters.firstdraft.com/chapters/859#use-githubs-interface-to-merge)
- - [Git aliases](https://chapters.firstdraft.com/chapters/857)
+Try to use a good git workflow, including branching, opening Pull Requests, and merging back to `main` before starting on your next task. If you do, then it will be easy for us to give you feedback on each task in isolation.
 
 ### Resources
 
@@ -84,6 +93,11 @@ We have to think through each and every route and action that a user can take. M
  - Devise's `current_user` method.
  - Ruby's `if`/`else` statements.
  - Deleting or limiting routes with `only:` and `except:` after `resources`.
+
+
+Now, spend some time trying to resolve the security holes on your own! When you get stuck or want some guidance, revisit the rest of the lesson below.
+
+---
 
 ## `except` and `only` to Limit Routes, 00:55:00 to 01:02:00
 
@@ -649,7 +663,7 @@ end
 ```
 {: mark_lines="9"}
 
-Test it out by visiting a show page that you shouldn't be able to (you can remove the **/edit** from an edit page to find a URL.)
+Test it out by visiting a show page that you shouldn't be able to (you can remove the `/edit` from an edit page to find a URL.)
 
 Great! But what if we don't want to show an error page? Redirecting with a flash message was pretty nice. Well, we can rescue that specific exception in `ApplicationController`:
 
@@ -799,7 +813,7 @@ So — that means that all we need to do from now on is:
 
 If we've done #2, which will force us to do #1, that will ensure that we've at least thought about who can get into every action.
 
-Try visiting **/follow_requests** right now — oops! Quite a big security hole, and one that's depressingly common to find left open after a resource has been generated with `scaffold`.
+Try visiting `/follow_requests` right now — oops! Quite a big security hole, and one that's depressingly common to find left open after a resource has been generated with `scaffold`.
 
 Pundit includes a method called `verify_authorized` that we can call in an `after_action` in the `ApplicationController` to help enforce the discipline of pruning our unused routes:
 
@@ -822,7 +836,7 @@ after_action :verify_authorized, except: :index
 after_action :verify_policy_scoped, only: :index
 ```
 
-Now try visiting **/follow_requests** or some other scaffolded route that was insecurely left reachable. You'll see that you can't.
+Now try visiting `/follow_requests` or some other scaffolded route that was insecurely left reachable. You'll see that you can't.
 
 If necessary, you can make the choice to `skip_before_action :verify_authorized` on a case-by-case basis, as we did for `:authenticate_user!`. We are now secure-by-default instead of insecure-by-default.
 
