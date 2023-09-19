@@ -55,8 +55,6 @@ Here's just _some_ of the security issues we need to fix:
   - `/follow_requests`
   - That implies they can also reach `/ID/edit`, etc. for each of those
 - Private profiles are not private at all
-- No limit to password attempts
-- The `own_id` can be changed by manipulating the edit form for a photo and comment
 
 Rails does a lot of helpful things for us like CSRF authenticity tokens, encrypting `session` so it can't be spoofed, etc., but it can't save us from ourselves! If we just use `scaffold` and leave all the routes, then they will be available.
 
