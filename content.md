@@ -17,13 +17,15 @@ Did you read the differences above? Good! Then [here is a walkthrough video for 
 
 ## Getting started
 
-There are no automated tests for this project. Instead you will create a fork of two repositories as you work through this lesson, and open pull requests to be submitted on Canvas.
+There are no automated tests for this project. Instead you will create a fork the project repository, and open pull requests to be submitted on Canvas.
 
-Here is the first repository to fork and open a codespace on:
+Here is the repository to fork and open a codespace on:
 
 [github.com/appdev-projects/industrial-auth-1/fork](https://github.com/appdev-projects/industrial-auth-1/fork)
 
-A potential target to compare your app to can be found here:
+The starting point code is a possible solution to the previous `photogram-industrial` project. In this solution, I built out the frontend much more than where we left off for the required (video) portion of that project.
+
+A potential target to compare your work in this lesson to can be found here:
 
 [industrial-auth-1.matchthetarget.com](https://industrial-auth-1.matchthetarget.com/)
 
