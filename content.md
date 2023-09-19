@@ -21,18 +21,18 @@ There are no automated tests for this project. Instead you will create a fork of
 
 Here is the first repository to fork and open a codespace on:
 
-[github.com/appdev-projects/industrial-auth-1](https://github.com/appdev-projects/industrial-auth-1)
+[github.com/appdev-projects/industrial-auth-1/fork](https://github.com/appdev-projects/industrial-auth-1/fork)
 
 ## Finding holes
 
-The project for today is [Photogram Industrial Authentication](https://github.com/appdev-projects/industrial-auth-1). Get that project opened on Gitpod now.
+The project for today is [Photogram Industrial Authorization](https://github.com/appdev-projects/industrial-auth-1). Get that project opened in a codespace now.
 
 Our industrial-grade application is shaping up, but it's sorely lacking in one area: security.
 
 Right now, if you spin up the app, everyone can see everything and do everything (especially if they can guess URLs, which are easy to guess since we're following RESTful conventions and using sequential integer IDs). Try it out:
 
-- `bin/server`
-- `rails sample_data`
+- `bin/dev`
+- `rake sample_data`
 - Sign in with `alice@example.com` / `password`.
 - Poke around. Make a list of security issues that you discover.
 
