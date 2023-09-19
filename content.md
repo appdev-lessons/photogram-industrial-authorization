@@ -1,4 +1,4 @@
-# Photogram Industrial Authentication
+# Photogram Industrial Authorization
 
 ## Walkthrough video
 
@@ -17,13 +17,13 @@ Did you read the differences above? Good! Then [here is a walkthrough video for 
 
 ## Getting started
 
-Let's continue with `photogram-industrial`, keeping in mind a rough target to work towards:
+There are no automated tests for this project. Instead you will create a fork of two repositories as you work through this lesson, and open pull requests to be submitted on Canvas.
 
-[pg-industrial-2-final.herokuapp.com](https://pg-industrial-2-final.herokuapp.com/)
+Here is the first repository to fork and open a codespace on:
 
-So navigate to `github.com/codespaces` and reopen your `photogram-industrial` codespace to continue building on what you accomplished in _Photogram Industrial Parts 1 and 2_.
+[github.com/appdev-projects/industrial-auth-1](https://github.com/appdev-projects/industrial-auth-1)
 
-## Starting Industrial Authentication, Finding Holes 00:33:30 to 00:55:00
+## Finding holes
 
 The project for today is [Photogram Industrial Authentication](https://github.com/appdev-projects/industrial-auth-1). Get that project opened on Gitpod now.
 
