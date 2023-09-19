@@ -23,6 +23,12 @@ Here is the first repository to fork and open a codespace on:
 
 [github.com/appdev-projects/industrial-auth-1/fork](https://github.com/appdev-projects/industrial-auth-1/fork)
 
+A potential target to compare your app to can be found here:
+
+[industrial-auth-1.matchthetarget.com](https://industrial-auth-1.matchthetarget.com/)
+
+But we won't rely much on the target, rather, we want to think about how we can make _our app_ more secure.
+
 ## Finding holes
 
 The project for today is _Photogram Industrial Authorization_.
@@ -37,10 +43,6 @@ Right now, if you spin up the app, everyone can see everything and do everything
 - Poke around. Make a list of security issues that you discover.
 
 We should make the application more secure! 
-
-Here is our target:
-
-[industrial-auth-1.matchthetarget.com](https://industrial-auth-1.matchthetarget.com/)
 
 Here's just _some_ of the security issues we need to fix:
 
